@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400&display=swap');
+
+body {
+  background-color: burlywood;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-family: "Readex Pro", Verdana, sans-serif;
+  font-size: 50px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+s .timerBox {
+  display: flex;
+  justify-content: center;
+
+  text-align: center;
+  margin: 0 auto;
+  width: 30%;
+
+  border-radius: 8px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.timer {
+  font-family: "Readex Pro", Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 100px;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.strtButton {
+  font-family: "Readex Pro", Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 25px;
+}
