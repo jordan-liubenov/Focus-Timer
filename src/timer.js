@@ -24,6 +24,8 @@ export const start_timer = () => {
     while (timer_active) {
       if (TIMER.minutes == 0 && TIMER.seconds == 0) { //break loop when the clock hits zero
         timer_active = false;
+        pauseButton.disabled = true;
+        startButton.disabled = false;
       }
 
       if (TIMER.seconds > 0) {
