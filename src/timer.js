@@ -6,7 +6,7 @@ let TIMER = { minutes: 24, seconds: 59 }; //initial time at start
 export let timer_active = false;
 
 export let counter = 0;
-let breakTime = false;
+export let breakTime = false;
 
 export let paused = false;
 
@@ -19,17 +19,15 @@ const sleep = (ms) => { //basic sleep function that adds delay between operation
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+
 export const start_timer = () => {
   countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
 
   startButton.addEventListener("click", async (e) => {
     paused = false;
-
     e.target.disabled = true;
     pauseButton.disabled = false;
-
     timer_active = true;
-
     breakTime = false;
 
     disable_break(breakTime);
@@ -72,7 +70,7 @@ export const start_timer = () => {
       countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
       await sleep(995);
     }
-    if (counter % 4 == 0) {
+    if (counter % 3 == 0) {
       activate_break_long(breakTime);
     } else {
       activate_break_short(breakTime);

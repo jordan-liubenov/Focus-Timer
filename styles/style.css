@@ -96,7 +96,7 @@ body {
 
   border-radius: 8px;
   backdrop-filter: blur(20px);
-  background-color: rgba(230, 103, 103, 0.353);
+  background-color: rgba(228, 163, 163, 0.353);
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
