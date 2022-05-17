@@ -1,11 +1,11 @@
-import { activate_break, disable_break } from "./breaks.js";
+import { activate_break_long, activate_break_short, disable_break } from "./breaks.js";
 
 const countdown = document.querySelector("body > div.timerBox > p");
 
-let TIMER = { minutes: 1, seconds: 10 }; //initial time at start
+let TIMER = { minutes: 24, seconds: 59 }; //initial time at start
 export let timer_active = false;
 
-let counter = 3;
+export let counter = 0;
 let breakTime = false;
 
 export let paused = false;
@@ -43,13 +43,11 @@ export const start_timer = () => {
         pauseButton.disabled = true;
         startButton.disabled = false;
 
-        TIMER = { minutes: 1, seconds: 59 } //set timer to default values after it finishes a pass
+        TIMER = { minutes: 24, seconds: 59 } //set timer to default values after it finishes a pass
         countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
 
         counter++;
         breakTime = true;
-
-        activate_break(counter, breakTime);
         break;
       }
 
@@ -73,6 +71,11 @@ export const start_timer = () => {
       }
       countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
       await sleep(995);
+    }
+    if (counter % 4 == 0) {
+      activate_break_long(breakTime);
+    } else {
+      activate_break_short(breakTime);
     }
   });
 
