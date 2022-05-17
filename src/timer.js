@@ -1,7 +1,14 @@
+import { activate_break, disable_break } from "./breaks.js";
+
 const countdown = document.querySelector("body > div.timerBox > p");
 
-const TIMER = { minutes: 24, seconds: 59 }; //initial time at start
-let timer_active = false;
+let TIMER = { minutes: 1, seconds: 10 }; //initial time at start
+export let timer_active = false;
+
+let counter = 3;
+let breakTime = false;
+
+export let paused = false;
 
 //buttons ------------------------------------------------------------------------------
 const startButton = document.querySelector("body > div.buttonDiv > button");
@@ -16,16 +23,34 @@ export const start_timer = () => {
   countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
 
   startButton.addEventListener("click", async (e) => {
+    paused = false;
 
     e.target.disabled = true;
     pauseButton.disabled = false;
+
     timer_active = true;
+
+    breakTime = false;
+
+    disable_break(breakTime);
 
     while (timer_active) {
       if (TIMER.minutes == 0 && TIMER.seconds == 0) { //break loop when the clock hits zero
         timer_active = false;
+
+        paused = false;
+
         pauseButton.disabled = true;
         startButton.disabled = false;
+
+        TIMER = { minutes: 1, seconds: 59 } //set timer to default values after it finishes a pass
+        countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
+
+        counter++;
+        breakTime = true;
+
+        activate_break(counter, breakTime);
+        break;
       }
 
       if (TIMER.seconds > 0) {
@@ -47,7 +72,7 @@ export const start_timer = () => {
         }
       }
       countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
-      await sleep(1000);
+      await sleep(995);
     }
   });
 
@@ -56,5 +81,7 @@ export const start_timer = () => {
     timer_active = false;
     startButton.disabled = false;
     pauseButton.disabled = true;
+
+    paused = true;
   });
 };
