@@ -1,12 +1,14 @@
-import { activate_break_long, activate_break_short, disable_break } from "./breaks.js";
+import { activate_break_long, activate_break_short, disable_break, five_min_countDown } from "./breaks.js";
+import { timer_countdown } from "./countdownLoop.js";
 
 const countdown = document.querySelector("body > div.timerBox > p");
 
-let TIMER = { minutes: 24, seconds: 59 }; //initial time at start
+export let TIMER = { minutes: 1, seconds: 10 };
 export let timer_active = false;
 
 export let counter = 0;
-export let breakTime = false;
+
+let breakTime = false;
 
 export let paused = false;
 
@@ -15,10 +17,9 @@ const startButton = document.querySelector("body > div.buttonDiv > button");
 const pauseButton = document.querySelector("body > div.buttonDiv > button:nth-child(2)");
 //--------------------------------------------------------------------------------------
 
-const sleep = (ms) => { //basic sleep function that adds delay between operations when called with the passed milliseconds
+export const sleep = (ms) => { //basic sleep function that adds delay between operations when called with the passed milliseconds
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
-
 
 export const start_timer = () => {
   countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
@@ -41,39 +42,24 @@ export const start_timer = () => {
         pauseButton.disabled = true;
         startButton.disabled = false;
 
-        TIMER = { minutes: 24, seconds: 59 } //set timer to default values after it finishes a pass
+        TIMER = { minutes: 1, seconds: 10 } //set timer to default values after it finishes a pass
         countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
 
         counter++;
         breakTime = true;
         break;
       }
+      document.title = countdown.textContent = `${TIMER.minutes}:${TIMER.seconds} | Focus Timer`;
+      timer_countdown(TIMER, countdown); //if timer has not reached 00:00 yet, continue to count down
 
-      if (TIMER.seconds > 0) {
-        TIMER.seconds--;
-      } else if (TIMER.seconds == 0) {
-        TIMER.minutes--;
-        TIMER.seconds = 59;
-      }
-
-      if (TIMER.seconds < 10) {
-        TIMER.seconds = "0" + TIMER.seconds;
-      }
-      if (TIMER.minutes < 10) {
-        if (TIMER.minutes.toString().charAt(0) != "0") {
-          TIMER.minutes = "0" + TIMER.minutes;
-        }
-        if (TIMER.minutes == "0") {
-          TIMER.minutes = "0" + 0;
-        }
-      }
-      countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
       await sleep(995);
     }
+
     if (counter % 3 == 0) {
       activate_break_long(breakTime);
     } else {
       activate_break_short(breakTime);
+      //five_min_countDown(startButton);
     }
   });
 
