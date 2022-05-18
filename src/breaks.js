@@ -8,7 +8,7 @@ const long_break = document.querySelector("#longBreakBox");
 const countdown = document.querySelector("body > div.timerBox > p");
 
 const FIVE = { minutes: "0" + 4, seconds: 59 }; //short break (5 mins)
-const FIFTEEN = { minutes: 1, seconds: 12 }; //long break (15 mins)
+const FIFTEEN = { minutes: 14, seconds: 59 }; //long break (15 mins)
 
 export const activate_break_long = (breakTime) => {
   if (breakTime && !paused) {
