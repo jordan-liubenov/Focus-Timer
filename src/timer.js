@@ -1,9 +1,9 @@
-import { activate_break_long, activate_break_short, disable_break, five_min_countDown } from "./breaks.js";
+import { activate_break_long, activate_break_short, disable_break, fifteen_min_countdown, five_min_countDown } from "./breaks.js";
 import { timer_countdown } from "./countdownLoop.js";
 
 const countdown = document.querySelector("body > div.timerBox > p");
 
-export let TIMER = { minutes: 1, seconds: 10 };
+export let TIMER = { minutes: 24, seconds: 59 };
 export let timer_active = false;
 
 export let counter = 0;
@@ -42,7 +42,7 @@ export const start_timer = () => {
         pauseButton.disabled = true;
         startButton.disabled = false;
 
-        TIMER = { minutes: 1, seconds: 10 } //set timer to default values after it finishes a pass
+        TIMER = { minutes: 24, seconds: 59 } //set timer to default values after it finishes a pass
         countdown.textContent = `${TIMER.minutes}:${TIMER.seconds}`;
 
         counter++;
@@ -55,11 +55,12 @@ export const start_timer = () => {
       await sleep(995);
     }
 
-    if (counter % 3 == 0) {
+    if (counter % 3 == 0 && !paused) {
       activate_break_long(breakTime);
-    } else {
+      fifteen_min_countdown(startButton);
+    } else if (counter % 3 != 0 && !paused) {
       activate_break_short(breakTime);
-      //five_min_countDown(startButton);
+      five_min_countDown(startButton);
     }
   });
 
