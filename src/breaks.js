@@ -52,7 +52,7 @@ export const five_min_countDown = (startButton) => {
     while (breakActive) { //countdown loop for break timer
       if (FIVE.minutes == 0 && FIVE.seconds == 0) {
         startButton.disabled = false; //re-enable start button
-        countdown.textContent = `1:10`; //set back to 24:59
+        countdown.textContent = `24:59`; //set back to 24:59
         breakActive = false;
         disable_break();
         break;
