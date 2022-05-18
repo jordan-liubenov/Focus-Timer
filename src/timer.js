@@ -1,5 +1,5 @@
 import { activate_break_long, activate_break_short, disable_break, fifteen_min_countdown, five_min_countDown } from "./breaks.js";
-import { timer_countdown } from "./countdownLoop.js";
+import { timer_countdown } from "./countdownLogic.js";
 
 const countdown = document.querySelector("body > div.timerBox > p");
 

@@ -1,9 +1,9 @@
-import { timer_countdown } from "./countdownLoop.js";
+import { timer_countdown } from "./countdownLogic.js";
 import { play_break_sound, play_start_sound } from "./sounds.js";
 import { paused, sleep } from "./timer.js";
 
-const short_break = document.querySelector("#shortBreakBox");
-const long_break = document.querySelector("#longBreakBox");
+const short_break = document.querySelector("#shortBreakBox"); //5 min break box
+const long_break = document.querySelector("#longBreakBox"); //15 min break box
 
 const countdown = document.querySelector("body > div.timerBox > p");
 
