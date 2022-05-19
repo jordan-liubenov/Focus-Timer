@@ -1,3 +1,4 @@
+import { fetch_quotes } from "./quoteFetcher.js";
 import { activate_break_long, activate_break_short, disable_break, fifteen_min_countdown, five_min_countDown } from "./breaks.js";
 import { timer_countdown } from "./countdownLogic.js";
 
@@ -32,6 +33,7 @@ export const start_timer = () => {
     breakTime = false;
 
     disable_break(breakTime);
+    fetch_quotes();
 
     while (timer_active) {
       if (TIMER.minutes == 0 && TIMER.seconds == 0) { //break loop when the clock hits zero
