@@ -14,9 +14,12 @@ export const fetch_quotes = async () => {
 
     let index = get_random_element(res);
     let current_quote = res[index];
+    if (current_quote.author == null) {
+      message_box.textContent = `${current_quote.text} ~~ by Unknown`;
+    } else {
+      message_box.textContent = `${current_quote.text} ~~ by ${current_quote.author}`;
+    }
 
-    console.log(current_quote);
-    message_box.textContent = `${current_quote.text} ~~ by ${current_quote.author}`;
   } catch (error) {
     throw error;
   }
