@@ -1,4 +1,3 @@
-import { fetch_quotes } from "./quoteFetcher.js";
 import { activate_break_long, activate_break_short, disable_break, fifteen_min_countdown, five_min_countDown } from "./breaks.js";
 import { timer_countdown } from "./countdownLogic.js";
 
@@ -32,7 +31,6 @@ export const start_timer = () => {
     timer_active = true;
     breakTime = false;
 
-    fetch_quotes();
     disable_break(breakTime);
 
     while (timer_active) {
@@ -53,6 +51,7 @@ export const start_timer = () => {
       }
       document.title = countdown.textContent = `${TIMER.minutes}:${TIMER.seconds} | Focus Timer`;
       timer_countdown(TIMER, countdown); //if timer has not reached 00:00 yet, continue to count down
+
       await sleep(995);
     }
 
