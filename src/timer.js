@@ -32,8 +32,8 @@ export const start_timer = () => {
     timer_active = true;
     breakTime = false;
 
-    disable_break(breakTime);
     fetch_quotes();
+    disable_break(breakTime);
 
     while (timer_active) {
       if (TIMER.minutes == 0 && TIMER.seconds == 0) { //break loop when the clock hits zero
@@ -53,7 +53,6 @@ export const start_timer = () => {
       }
       document.title = countdown.textContent = `${TIMER.minutes}:${TIMER.seconds} | Focus Timer`;
       timer_countdown(TIMER, countdown); //if timer has not reached 00:00 yet, continue to count down
-
       await sleep(995);
     }
 
