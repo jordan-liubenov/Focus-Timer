@@ -10,7 +10,7 @@ const create_video_player = () => {
 
   videoPlayer.width = 700;
   videoPlayer.height = 600;
-  videoPlayer.src = "../video/roundabout.mp4";
+  videoPlayer.src = "video/roundabout.mp4";
   videoPlayer.autoplay = true;
 
   return videoPlayer;
@@ -26,7 +26,8 @@ export const easter_egg = () => {
       for (let i = 0; i < 9; i++) {
         const video = create_video_player();
         easterEggDiv.appendChild(video);
-        if (i == 0) {
+
+        if (i == 0) { //mutes all video players besides the first
           video.muted = false;
         } else {
           video.muted = true;
