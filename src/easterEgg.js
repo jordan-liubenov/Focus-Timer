@@ -54,5 +54,9 @@ function clear_page() {
     visible = false;
     easterEggDiv.replaceChildren();
     e.target.style.display = "none";
+    let invisible_label = document.createElement("label");
+    invisible_label.className = "unselectable";
+    invisible_label.textContent = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"; //invisible unicode characters
+    easterEggDiv.appendChild()
   });
 }
