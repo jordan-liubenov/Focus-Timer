@@ -42,7 +42,6 @@ export const easter_egg = () => {
   });
 };
 
-//TO-DO: add "Clear Page" button functionality
 function clear_page() {
   if (!visible) {
     return;
@@ -55,8 +54,4 @@ function clear_page() {
     easterEggDiv.replaceChildren();
     e.target.style.display = "none";
   });
-
-  //if visible=true, set "clearBtn" to be visible,
-  //add event listener that removes all videos from the easterEggDiv
-  //make visible=false and finally hide the "clearBtn" again
 }
