@@ -10,7 +10,7 @@ const create_video_player = () => {
 
   videoPlayer.width = 700;
   videoPlayer.height = 600;
-  videoPlayer.src = "video/roundabout.mp4";
+  videoPlayer.src = "/video/roundabout.mp4";
   videoPlayer.autoplay = true;
 
   return videoPlayer;
