@@ -57,6 +57,6 @@ function clear_page() {
     let invisible_label = document.createElement("label");
     invisible_label.className = "unselectable";
     invisible_label.textContent = "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"; //invisible unicode characters
-    easterEggDiv.appendChild()
+    easterEggDiv.appendChild(invisible_label);
   });
 }
